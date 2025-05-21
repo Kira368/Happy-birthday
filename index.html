@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Папа!</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #2d4a5f);
+            color: #f0f0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Шапка */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            background: url('p1.png') no-repeat center/cover;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            animation: fadeIn 3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Галерея */
+        .gallery {
+            padding: 40px 20px;
+            text-align: center;
+            background: #2d4a5f;
+        }
+        
+        .gallery h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        .photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .photos img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            border: 2px solid #3a5a78;
+        }
+        
+        .photos img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Пожелания */
+        .wishes {
+            padding: 40px 20px;
+            background: rgba(26, 42, 58, 0.9);
+            text-align: center;
+            border-top: 1px solid #3a5a78;
+            border-bottom: 1px solid #3a5a78;
+        }
+        
+        .wishes h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4dabf7;
+        }
+        
+        .wish-card {
+            background: #1a2a3a;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s;
+            border: 1px solid #3a5a78;
+        }
+        
+        /* Почему мы любим */
+        .reasons {
+            padding: 40px 20px;
+            text-align: center;
+            background: #2d4a5f;
+        }
+        
+        .reasons h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #4dabf7;
+        }
+        
+        .reason-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .reason-card {
+            background: #1a2a3a;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #3a5a78;
+        }
+        
+        .reason-card h3 {
+            color: #4dabf7;
+            margin-bottom: 10px;
+        }
+        
+        /* Футер */
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: #1a2a3a;
+            color: #f0f0f0;
+            border-top: 1px solid #3a5a78;
+        }
+        
+        .love {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+            color: #ff6b6b;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .reason-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Аудио плеер */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: #1a2a3a;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #3a5a78;
+        }
+        
+        .audio-player button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4dabf7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>С Днём Рождения, Папа!</h1>
+        <p>Ты - самый добрый, самый сильный и самый любимый! Желаем тебе здоровья, счастья и долгих лет жизни!</p>
+    </section>
+    
+    <!-- Галерея -->
+    <section class="gallery">
+        <h2>Фото</h2>
+        <div class="photos">
+            <img src="img/p1.png" alt="Фото с папой 1">
+            <img src="img/p2.png" alt="Фото с папой 2">
+            <img src="img/p3.png" alt="Фото с папой 3">
+        </div>
+    </section>
+    
+    <!-- Пожелания -->
+    <section class="wishes">
+        <h2>Дорогой папа!</h2>
+        <div class="wish-card">
+            <p>В этот особенный день хотим пожелать тебе крепкого здоровья, бодрости духа, исполнения всех желаний и много-много радости! Пусть каждый день приносит тебе улыбки и теплоту! Мы тебя очень любим!</p>
+        </div>
+    </section>
+    
+    <!-- Почему мы любим папу -->
+    <section class="reasons">
+        <h2>Почему мы тебя любим</h2>
+        <div class="reason-cards">
+            <div class="reason-card">
+                <h3>Ты всегда поддерживаешь</h3>
+                <p>В любой ситуации ты даёшь мудрый совет и вселяешь уверенность.</p>
+            </div>
+            <div class="reason-card">
+                <h3>Ты - наш герой</h3>
+                <p>С тобой не страшны никакие трудности, ты всегда придёшь на помощь.</p>
+            </div>
+            <div class="reason-card">
+                <h3>С тобой весело</h3>
+                <p>Ты умеешь создавать праздник даже в обычный день!</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="love">❤️</div>
+        <p>Мы тебя очень любим!</p>
+        <p>Твоя семья</p>
+    </footer>
+    
+    <!-- Аудио плеер -->
+    <div class="audio-player">
+        <button id="playButton">▶️</button>
+        <audio id="bgMusic" loop>
+            <source src="papa.mp3" type="audio/mp3">
+        </audio>
+    </div>
+    
+    <script>
+        // Воспроизведение музыки
+        const music = document.getElementById('bgMusic');
+        const playButton = document.getElementById('playButton');
+        let isPlaying = false;
+        
+        playButton.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                playButton.textContent = '▶️';
+            } else {
+                music.play();
+                playButton.textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Запуск конфетти при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        });
+        
+        // Анимация при скролле
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.wish-card, .reason-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Запустить при загрузке
+    </script>
+    
+    <!-- Скрипт конфетти -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+</html>
